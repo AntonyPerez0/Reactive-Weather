@@ -4,12 +4,21 @@ import getIcon from "../components/getIcon";
 const Location = ({ data, location, setLocation }) => {
   const currentCity = data.find((city) => city.city === location);
 
+  if (!currentCity) {
+    return <h3>Location not found</h3>;
+  }
+
   const icon = getIcon(currentCity.forecast);
 
   return (
     <div className="card">
       <div className="img-container">
-        <img className="card-img-top" src={icon} alt="Weather icon" id="icon" />
+        <img
+          className="card-img-top"
+          src={icon}
+          alt="Weather icon"
+          id="icon"
+        />
       </div>
       <div className="card-body">
         <h3 className="card-title">{currentCity.city}</h3>
